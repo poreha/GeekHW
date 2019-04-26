@@ -28,7 +28,7 @@ using namespace std;
 // Task 11
 int Avg8(){
 
-    int nstr[ARR_SIZE]; //change it to a string
+    int nstr[ARR_SIZE];
     int i = 0, eq = 0, count = 0;
 cout << "Input numbers (\"0\" to stop)\n";
 while(1){
@@ -124,13 +124,11 @@ cin >> a >> b >> c;
    cout << "The highest value is: " << MaxOfThree(a,b,c) << endl;
 
 cout << "\tTask #13a(my randomizer from 0):" << endl;
-
 cout << "Input the top value: ";
 cin >> top;
 Rrand(top);
 
 cout << "\tTask #13b(Built-in rand()):" << endl;
-
 cout << "Input the lowest value: ";
 cin >> min;
 cout << "and range: ";
