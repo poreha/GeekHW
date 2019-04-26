@@ -19,11 +19,13 @@ b. Без использования стандартной функции rand(
 
 # include <iostream>
 # include <ctime>
+# include <math.h>
 
 # define ARR_SIZE 100
 
 using namespace std;
 
+// Task 11
 int Avg8(){
 
     int nstr[ARR_SIZE]; //change it to a string
@@ -58,6 +60,7 @@ else {
 
 };
 
+//Task 12
 int MaxOfThree(int a, int b, int c){
     int max = a;
 if(b > max) max = b;
@@ -67,41 +70,77 @@ if(c > max) max = c;
 return max;
 };
 
-void Rrand(int mod, int max){
+//Task 13a
+void Rrand(int max){
 int x, a, b;
-    //m = 1000; // Вершина последовательности
-    //b = time(NULL);
     a = 117;
     x = 1;
-
-    for (int i = 0; i < mod; i++)
-    {
-        b = time(NULL)%10;
+    b = time(NULL)%10;    
         x = (a * x + b) % max;
-        cout << x << " ";
-    }
-    cout << endl;
-
+        cout << x << endl;
 }
 
+//Task 13b
+int Rng(int range, int min){
+    srand(time(NULL));
+    return (rand() % range + min);
+}
+
+//Task 14
+void Automorph(int orig){
+    int origAr[ARR_SIZE], sqorigAr[ARR_SIZE];
+    int sqorig = pow(orig, 2);
+    int i, power = 1, flag = 0;
+    int buff = orig, sqbuff = sqorig;
+    for(i = 0; buff > 0; i++, buff /= 10)
+    {
+        origAr[i] = buff % 10;
+        sqorigAr[i] = sqbuff % 10;
+        power *= 10; 
+        sqbuff /= 10; 
+        if(origAr[i] != sqorigAr[i]){
+            cout << orig <<" is Not Automorpic" << endl;
+            flag++;
+            break;
+        }
+    }
+if(flag == 0){
+    for (int j = 0; j < sqorig; j++)
+        if((j % power) == orig) cout << j << " ";
+}
+    cout << "\nSquare: " << sqorig << endl;
+}
 
 int main(int argc, char** args)
 {
-    int a, b, c, amount, top;
-cout << "\tTask #11:" << endl;
-  //  Avg8();
+    int a, b, c, top, range, min, morph;
 
-cout << "\tTask #12:" << endl;
+cout << "\tTask #11(8-checking):" << endl;
+    Avg8();
+
+cout << "\tTask #12(Max of three):" << endl;
 cout << "Input three nums:" << endl;
-//cin >> a >> b >> c;
- //  cout << "The highest value is: " << MaxOfThree(a,b,c) << endl;
+cin >> a >> b >> c;
+   cout << "The highest value is: " << MaxOfThree(a,b,c) << endl;
 
-cout << "\tTask #13:" << endl;
-cout << "Input amount of numbers: ";
-cin >> amount;
-cout << "and the top value: ";
+cout << "\tTask #13a(my randomizer from 0):" << endl;
+
+cout << "Input the top value: ";
 cin >> top;
-Rrand(amount, top);
+Rrand(top);
 
+cout << "\tTask #13b(Built-in rand()):" << endl;
+
+cout << "Input the lowest value: ";
+cin >> min;
+cout << "and range: ";
+cin >> range;
+cout << "RNG: " << Rng(range, min) << endl;
+
+
+cout << "\tTask #14(Automorphism):" << endl;
+cout << "Input num to check automorphism: ";
+cin >> morph;
+Automorph(morph);
     return 0;
 }
