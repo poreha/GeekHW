@@ -31,6 +31,7 @@ int Avg8(){
     int nstr[ARR_SIZE];
     int i = 0, eq = 0, count = 0;
 cout << "Input numbers (\"0\" to stop)\n";
+
 while(1){
     cin >> nstr[i];
     if(nstr[i] == 0) 
@@ -78,6 +79,7 @@ int x, a, b;
     b = time(NULL)%10;    
         x = (a * x + b) % max;
         cout << x << endl;
+       
 }
 
 //Task 13b
@@ -126,6 +128,7 @@ cin >> a >> b >> c;
 cout << "\tTask #13a(my randomizer from 0):" << endl;
 cout << "Input the top value: ";
 cin >> top;
+
 Rrand(top);
 
 cout << "\tTask #13b(Built-in rand()):" << endl;
